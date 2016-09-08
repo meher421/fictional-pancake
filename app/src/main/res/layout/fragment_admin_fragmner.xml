@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.myapplication.admin.ui.AdminTestFragment">
+    tools:context="com.njk.app.admin.AdminTestFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
