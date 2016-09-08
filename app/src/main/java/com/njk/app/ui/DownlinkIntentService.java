@@ -141,13 +141,14 @@ public class DownlinkIntentService extends IntentService {
 
                 Logger.i(TAG, "data : " + dataSnapshot);
 
+                //TODO add and parse usd and cal and save
                 ProductModelHelper data = dataSnapshot.getValue(ProductModelHelper.class);
 //                Logger.i(TAG, " product data : " + data.getProducts().get("Badam").get("Bodhan").getTimeStamp());
 
                 IMarket marketHelper = MarketHelper.getInstance();
                 marketHelper.setProductsData(data.getProducts());
 
-//                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getTimeStamp());
+                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getBags());
 
                 Object[] products = data.getProducts().keySet().toArray();
 
