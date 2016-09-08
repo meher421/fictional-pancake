@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/tit_home" />
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/tit_notifications" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/tit_settings" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/tit_about_us" />
+
+        <item
+            android:id="@+id/nav_contact_us"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/tit_contact_us" />
+
+        <item
+            android:id="@+id/admin"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Admin" />
+
+    </group>
+
+
+</menu>

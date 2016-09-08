@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">Njk</string>
+    <string name="app_name">ABCD</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tit_home">Home</string>
+    <string name="tit_contact_us">Contact us</string>
+    <string name="tit_notifications">Notifications</string>
+    <string name="tit_settings">Settings</string>
+    <string name="tit_about_us">About us</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="status">
+        <item>Down</item>
+        <item>Steady</item>
+        <item>Up</item>
+
+    </string-array>
 </resources>
