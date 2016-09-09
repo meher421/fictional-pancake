@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import com.myapplication.R;
 import com.njk.app.utils.Logger;
-import com.njk.app.admin.AdminActivity;
+import com.njk.app.testadmin.AdminActivity;
 import com.njk.app.ui.adapters.HomeAdapter;
 
 

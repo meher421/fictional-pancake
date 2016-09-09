@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.myapplication.R;
-import com.njk.app.admin.AdminActivity;
+import com.njk.app.testadmin.AdminActivity;
 import com.njk.app.dto.IMarket;
 import com.njk.app.dto.Market;
 import com.njk.app.dto.MarketHelper;

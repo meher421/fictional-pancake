@@ -1,4 +1,4 @@
-package com.njk.app.admin;
+package com.njk.app.testadmin;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.njk.app.admin.AdminFragment">
+    tools:context="com.njk.app.testadmin.AdminFragment">
 
     <RelativeLayout
         android:id="@+id/edit_layout"

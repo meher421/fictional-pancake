@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.njk.app.admin.AdminActivity" />
+        <activity android:name="com.njk.app.testadmin.AdminActivity" />
         <activity android:name="com.njk.app.ui.ProductActivity" />
 
         <service

@@ -1,4 +1,4 @@
-package com.njk.app.admin;
+package com.njk.app.testadmin;
 
 import android.content.Context;
 import android.support.design.widget.TextInputLayout;

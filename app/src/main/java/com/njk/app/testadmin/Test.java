@@ -1,4 +1,4 @@
-package com.njk.app.admin;
+package com.njk.app.testadmin;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

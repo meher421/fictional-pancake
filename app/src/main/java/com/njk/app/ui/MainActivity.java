@@ -15,8 +15,8 @@ import android.view.MenuItem;
 
 import com.njk.app.utils.Logger;
 import com.myapplication.R;
-import com.njk.app.admin.AdminActivity;
-import com.njk.app.admin.AdminTestFragment;
+import com.njk.app.testadmin.AdminActivity;
+import com.njk.app.testadmin.AdminTestFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
