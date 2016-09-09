@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.njk.app.ui.admin.AdminHomeActivity;
 import com.njk.app.utils.Logger;
 import com.myapplication.R;
 import com.njk.app.testadmin.AdminActivity;
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         if(id == R.id.admin){
-            startActivity(new Intent(MainActivity.this,AdminActivity.class));
+            startActivity(new Intent(MainActivity.this,AdminHomeActivity.class));
             return true ;
         }
 

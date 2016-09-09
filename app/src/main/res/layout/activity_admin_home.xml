@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_admin_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.njk.app.ui.admin.AdminHomeActivity">
+
+
+    <Button
+        android:onClick="onMarketEntryClick"
+        android:id="@+id/market_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Market Entry" />
+
+
+    <Button
+        android:onClick="onMessageEntryClick"
+        android:id="@+id/message_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Message Entry" />
+
+
+    <Button
+        android:onClick="onUsdEntryClick"
+        android:id="@+id/usd_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="USD Entry" />
+
+</LinearLayout>

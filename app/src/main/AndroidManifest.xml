@@ -23,7 +23,12 @@
 
         <service
             android:name="com.njk.app.ui.DownlinkIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <activity android:name="com.njk.app.ui.admin.AdminHomeActivity" />
+        <activity android:name="com.njk.app.ui.admin.AdminMarketEntry" />
+        <activity android:name="com.njk.app.ui.admin.AdminMessageEntry" />
+        <activity android:name="com.njk.app.ui.admin.AdminUsdEntry"></activity>
     </application>
 
 </manifest>
