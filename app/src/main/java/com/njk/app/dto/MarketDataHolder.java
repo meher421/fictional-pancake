@@ -23,11 +23,11 @@ public class MarketDataHolder {
         this.mProducts = mProducts;
     }
 
-    public ArrayList<String> getProducts() {
+    public ArrayList<String> getProductNames() {
         return mProductsList;
     }
 
-    public void setProducts(ArrayList list) {
+    public void setProductsNames(ArrayList list) {
         mProductsList = list;
 
     }

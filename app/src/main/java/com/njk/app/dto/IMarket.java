@@ -14,9 +14,9 @@ public interface IMarket {
 
     void setProductsData(Map<String, HashMap<String, Market>> data);
 
-    ArrayList<String> getProducts();
+    ArrayList<String> getProductNames();
 
-    void setProducts(ArrayList<String> list);
+    void setProductsNames(ArrayList<String> list);
 
 
     void setMarketsMap(HashMap<String,ArrayList<String>> test);

@@ -43,7 +43,7 @@ public class ProductActivity extends AppCompatActivity {
 
         int position = getIntent().getExtras().getInt("position");
 
-        mProducts = MarketHelper.getInstance().getProducts();
+        mProducts = MarketHelper.getInstance().getProductNames();
 
         Logger.i(TAG,"mProducts :"+mProducts.toString());
 

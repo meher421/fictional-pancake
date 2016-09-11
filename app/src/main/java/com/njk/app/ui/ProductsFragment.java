@@ -48,6 +48,7 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         Logger.i(TAG, "oncreateview "+productId);
 
+        getActivity().setTitle(productId);
         View view = inflater.inflate(R.layout.product_parent_layout, container, false);
 
         mRecyclerView =(RecyclerView)view.findViewById(R.id.recycler_view);

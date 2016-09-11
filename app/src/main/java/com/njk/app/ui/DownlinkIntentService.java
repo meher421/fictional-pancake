@@ -13,7 +13,7 @@ import com.njk.app.utils.Logger;
 import com.njk.app.utils.Util;
 import com.njk.app.dto.IMarket;
 import com.njk.app.dto.MarketHelper;
-import com.njk.app.dto.ProductModelHelper;
+import com.njk.app.dto.ProductModelFirebaseHelper;
 import com.njk.app.testdto.downlink.DayData;
 import com.njk.app.testdto.downlink.DownlinkImpl;
 import com.njk.app.testdto.downlink.IDownLink;
@@ -142,8 +142,8 @@ public class DownlinkIntentService extends IntentService {
                 Logger.i(TAG, "data : " + dataSnapshot);
 
                 //TODO add and parse usd and cal and save
-                ProductModelHelper data = dataSnapshot.getValue(ProductModelHelper.class);
-//                Logger.i(TAG, " product data : " + data.getProducts().get("Badam").get("Bodhan").getTimeStamp());
+                ProductModelFirebaseHelper data = dataSnapshot.getValue(ProductModelFirebaseHelper.class);
+//                Logger.i(TAG, " product data : " + data.getProductNames().get("Badam").get("Bodhan").getTimeStamp());
 
                 IMarket marketHelper = MarketHelper.getInstance();
                 marketHelper.setProductsData(data.getProducts());
@@ -153,7 +153,7 @@ public class DownlinkIntentService extends IntentService {
                 Object[] products = data.getProducts().keySet().toArray();
 
                 ArrayList list = new ArrayList(Arrays.asList(products));
-                marketHelper.setProducts(list);
+                marketHelper.setProductsNames(list);
 
                 Logger.i(TAG,"products list toString : "+list.toString());
 

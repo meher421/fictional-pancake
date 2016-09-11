@@ -6,9 +6,9 @@ import java.util.HashMap;
  * Created by meher on 28/8/16.
  */
 
-public class ProductModelHelper {
+public class ProductModelFirebaseHelper {
 
-    public ProductModelHelper(){}
+    public ProductModelFirebaseHelper(){}
 
 
     private HashMap<String,HashMap<String,Market>> products;

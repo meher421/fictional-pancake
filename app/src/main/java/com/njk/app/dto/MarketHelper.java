@@ -33,30 +33,29 @@ public class MarketHelper implements IMarket {
     }
 
     @Override
-    public ArrayList<String> getProducts() {
-      return linkData.getProducts();
+    public ArrayList<String> getProductNames() {
+        return linkData.getProductNames();
     }
 
     @Override
-    public void setProducts(ArrayList<String> list) {
-        linkData.setProducts(list);
+    public void setProductsNames(ArrayList<String> list) {
+        linkData.setProductsNames(list);
 
     }
 
     @Override
-    public void setMarketsMap(HashMap<String,ArrayList<String>> test) {
+    public HashMap<String, ArrayList<String>> getMarketsMap() {
+        return linkData.getMarketsMap();
+    }
+
+    @Override
+    public void setMarketsMap(HashMap<String, ArrayList<String>> test) {
         linkData.setMarketsMap(test);
 
     }
 
-    @Override
-    public HashMap<String,ArrayList<String>> getMarketsMap() {
-        return linkData.getMarketsMap();
-    }
-
-
-    public void getMarket(String productId,String market) {
-        linkData.getMarket(productId,market);
+    public void getMarket(String productId, String market) {
+        linkData.getMarket(productId, market);
     }
 
 
@@ -65,6 +64,6 @@ public class MarketHelper implements IMarket {
     }
 
     public HashMap<String, Market> getProduct(String productName) {
-       return linkData.getProduct(productName);
+        return linkData.getProduct(productName);
     }
 }
