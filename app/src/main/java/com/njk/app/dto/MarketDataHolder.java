@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class MarketDataHolder {
 
-    private Map<String, HashMap<String, Market>> mProducts;
+    private Map<String, HashMap<String, Market>> mProducts = new HashMap<>();
     private ArrayList<String> mProductsList;
     private HashMap<String, ArrayList<String>> mMarkets;
 
@@ -49,4 +49,7 @@ public class MarketDataHolder {
         mMarkets = list;
     }
 
+    public HashMap<String, Market> getProduct(String productName) {
+       return mProducts.get(productName);
+    }
 }

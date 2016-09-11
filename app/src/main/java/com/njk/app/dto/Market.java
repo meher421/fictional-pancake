@@ -13,7 +13,18 @@ public class Market {
     int state;
     long timestamp;
 
-    public Market(){}
+    public Market() {
+    }
+
+    public Market(String name, double status, int state, int bags, String date, long timestamp) {
+        this.name = name;
+        this.status = status;
+        this.state = state;
+        this.date = date;
+        this.bags = bags;
+
+        this.timestamp = timestamp;
+    }
 
     public String getName() {
         return name;

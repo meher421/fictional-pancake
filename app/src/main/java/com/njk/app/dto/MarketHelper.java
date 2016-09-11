@@ -63,4 +63,8 @@ public class MarketHelper implements IMarket {
     public ArrayList<String> getMarket(String productId) {
         return linkData.getMarket(productId);
     }
+
+    public HashMap<String, Market> getProduct(String productName) {
+       return linkData.getProduct(productName);
+    }
 }

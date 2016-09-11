@@ -8,6 +8,7 @@
     tools:context="com.njk.app.ui.admin.AdminHomeActivity">
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -15,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="100"
-            android:hint="Product Name" />
+            android:hint="Product Name"
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
 
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/market_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,11 +31,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="100"
-            android:hint="Market Name" />
+            android:hint="Market Name"
+            android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -40,11 +45,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="100"
-            android:hint="status" />
+            android:hint="status"
+            android:inputType="numberDecimal" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/market_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="100"
+            android:hint="Market status"
+            android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/bags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -52,31 +74,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="100"
-            android:hint="Market" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="100"
-            android:hint="Market status" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="100"
-            android:hint="Bags" />
+            android:hint="Bags"
+            android:inputType="number" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -84,6 +83,7 @@
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onSubmit"
         android:text="submit" />
 
 </LinearLayout>

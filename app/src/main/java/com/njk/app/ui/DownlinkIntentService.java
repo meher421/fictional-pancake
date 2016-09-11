@@ -148,7 +148,7 @@ public class DownlinkIntentService extends IntentService {
                 IMarket marketHelper = MarketHelper.getInstance();
                 marketHelper.setProductsData(data.getProducts());
 
-                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getBags());
+//                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getBags());
 
                 Object[] products = data.getProducts().keySet().toArray();
 

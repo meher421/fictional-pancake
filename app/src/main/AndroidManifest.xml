@@ -11,6 +11,7 @@
         <activity
             android:name="com.njk.app.ui.MainActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,17 +19,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.njk.app.testadmin.AdminActivity" />
-        <activity android:name="com.njk.app.ui.ProductActivity" />
+        <activity
+            android:name="com.njk.app.testadmin.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.njk.app.ui.ProductActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.njk.app.ui.DownlinkIntentService"
+
             android:exported="false" />
 
-        <activity android:name="com.njk.app.ui.admin.AdminHomeActivity" />
-        <activity android:name="com.njk.app.ui.admin.AdminMarketEntry" />
-        <activity android:name="com.njk.app.ui.admin.AdminMessageEntry" />
-        <activity android:name="com.njk.app.ui.admin.AdminUsdEntry"></activity>
+        <activity
+            android:name="com.njk.app.ui.admin.AdminHomeActivity"
+            android:label="Admin Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.njk.app.ui.admin.AdminMarketEntry"
+            android:label="Admin Market Entry"
+            android:screenOrientation="portrait" />
+        <activity
+            android:label="Admin Message Entry"
+            android:name="com.njk.app.ui.admin.AdminMessageEntry"
+            android:screenOrientation="portrait" />
+        <activity
+            android:label="Admin Usd Entry"
+            android:name="com.njk.app.ui.admin.AdminUsdEntry"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
