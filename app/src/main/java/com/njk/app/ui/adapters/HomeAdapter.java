@@ -43,15 +43,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     }
 
-//    public void addList() {
-//        mList.add("Turmaric");
-//        mList.add("cashew");
-//        mList.add("badam");
-//        mList.add("mirchi");
-//
-//        notifyDataSetChanged();
-//    }
-
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 

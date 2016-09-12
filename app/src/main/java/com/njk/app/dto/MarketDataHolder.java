@@ -13,6 +13,7 @@ public class MarketDataHolder {
     private Map<String, HashMap<String, Market>> mProducts = new HashMap<>();
     private ArrayList<String> mProductsList;
     private HashMap<String, ArrayList<String>> mMarkets;
+    private Double usdValue;
 
 
     public Map<String, HashMap<String, Market>> getProductsData() {
@@ -50,6 +51,14 @@ public class MarketDataHolder {
     }
 
     public HashMap<String, Market> getProduct(String productName) {
-       return mProducts.get(productName);
+        return mProducts.get(productName);
+    }
+
+    public Double getUsd() {
+        return usdValue;
+    }
+
+    public void setUsd(Double usd) {
+        usdValue = usd;
     }
 }

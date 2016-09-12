@@ -9,14 +9,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.njk.app.utils.Logger;
-import com.njk.app.utils.Util;
 import com.njk.app.dto.IMarket;
 import com.njk.app.dto.MarketHelper;
 import com.njk.app.dto.ProductModelFirebaseHelper;
 import com.njk.app.testdto.downlink.DayData;
 import com.njk.app.testdto.downlink.DownlinkImpl;
 import com.njk.app.testdto.downlink.IDownLink;
+import com.njk.app.utils.Logger;
+import com.njk.app.utils.Util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -132,6 +132,7 @@ public class DownlinkIntentService extends IntentService {
         Logger.i(TAG, "handleActionDataInit ");
 
 
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
 
@@ -145,28 +146,37 @@ public class DownlinkIntentService extends IntentService {
                 ProductModelFirebaseHelper data = dataSnapshot.getValue(ProductModelFirebaseHelper.class);
 //                Logger.i(TAG, " product data : " + data.getProductNames().get("Badam").get("Bodhan").getTimeStamp());
 
+                if (data == null) {
+                    notifyJobDone();
+                    return;
+                }
+
+                //Complete data.
                 IMarket marketHelper = MarketHelper.getInstance();
                 marketHelper.setProductsData(data.getProducts());
+                marketHelper.setUsdValue(data.getUsd());
 
 //                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getBags());
 
+                //Product names which will be used as keys.
                 Object[] products = data.getProducts().keySet().toArray();
 
                 ArrayList list = new ArrayList(Arrays.asList(products));
                 marketHelper.setProductsNames(list);
 
-                Logger.i(TAG,"products list toString : "+list.toString());
+                Logger.i(TAG, "products list toString : usd:" + marketHelper.getUsdValue() + " list :" + list.toString());
 
-                HashMap<String ,ArrayList<String>> marketsMap = new HashMap<>();
+                // Market names mapped with product names to query markets
+                HashMap<String, ArrayList<String>> marketsMap = new HashMap<>();
 
-                for(Object product : list){
+                for (Object product : list) {
                     String productName = product.toString();
                     Object[] test = data.getProducts().get(productName).keySet().toArray();
                     ArrayList marketList = new ArrayList(Arrays.asList(test));
-                    marketsMap.put(productName,marketList);
+                    marketsMap.put(productName, marketList);
 
 
-                    Logger.i(TAG,"Markets list toString : "+marketList.toString());
+                    Logger.i(TAG, "Markets list toString : " + marketList.toString());
                 }
                 marketHelper.setMarketsMap(marketsMap);
 

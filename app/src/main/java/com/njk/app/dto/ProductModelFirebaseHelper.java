@@ -8,10 +8,11 @@ import java.util.HashMap;
 
 public class ProductModelFirebaseHelper {
 
-    public ProductModelFirebaseHelper(){}
+    private Double usd;
+    private HashMap<String, HashMap<String, Market>> products;
 
-
-    private HashMap<String,HashMap<String,Market>> products;
+    public ProductModelFirebaseHelper() {
+    }
 
     public HashMap<String, HashMap<String, Market>> getProducts() {
         return products;
@@ -21,7 +22,11 @@ public class ProductModelFirebaseHelper {
         this.products = products;
     }
 
+    public Double getUsd() {
+        return usd;
+    }
 
-
-
+    public void setUsd(Double usd) {
+        this.usd = usd;
+    }
 }

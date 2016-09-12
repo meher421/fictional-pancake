@@ -9,26 +9,23 @@
 
 
     <Button
-        android:onClick="onMarketEntryClick"
-        android:id="@+id/market_entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onMarketEntryClick"
         android:text="Market Entry" />
 
 
     <Button
-        android:onClick="onMessageEntryClick"
-        android:id="@+id/message_entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onMessageEntryClick"
         android:text="Message Entry" />
 
 
     <Button
-        android:onClick="onUsdEntryClick"
-        android:id="@+id/usd_entry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onUsdEntryClick"
         android:text="USD Entry" />
 
 </LinearLayout>

@@ -54,6 +54,16 @@ public class MarketHelper implements IMarket {
 
     }
 
+    @Override
+    public Double getUsdValue() {
+        return linkData.getUsd();
+    }
+
+    @Override
+    public void setUsdValue(Double usd) {
+            linkData.setUsd(usd);
+    }
+
     public void getMarket(String productId, String market) {
         linkData.getMarket(productId, market);
     }

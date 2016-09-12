@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity
             return true ;
         }
 
-//        getFragmentManager().popBackStack();
 
         Fragment fragment = null;
 

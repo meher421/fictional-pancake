@@ -5,6 +5,7 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.myapplication.R;
 import com.njk.app.dto.Market;
@@ -46,6 +47,13 @@ public class AdminMarketEntry extends AppCompatActivity {
 
         String todaysDate = Util.getTodayDate();
         long millisec = System.currentTimeMillis();
+
+        Map<String, String> stringMap = new HashMap<>();
+        stringMap.put("title", productName);
+        stringMap.put("body", marketName);
+
+        DatabaseReference messageRef = FirebaseDatabase.getInstance().getReference("GlobalMarket").child("data").child("messages");
+        messageRef.child(""+millisec).setValue(stringMap);
 //        Market market = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
 
 //        HashMap<String, Market> marketHashMap = new HashMap<>(3);
@@ -53,24 +61,24 @@ public class AdminMarketEntry extends AppCompatActivity {
 
         HashMap<String, Market> productData = MarketHelper.getInstance().getProduct(productName);
 
-        if(productData != null){ //product found
-            Market marketData= productData.get(marketName);
-            if(marketData != null){ //product found
+        if (productData != null) { //product found
+            Market marketData = productData.get(marketName);
+            if (marketData != null) { //product found
                 marketData.setName(marketName);
                 marketData.setStatus(status);
                 marketData.setState(marketStatus);
                 marketData.setDate(todaysDate);
                 marketData.setBags(bags);
-            }else{ //market not found
+            } else { //market not found
                 marketData = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
-                productData.put(marketName,marketData);
+                productData.put(marketName, marketData);
             }
 
-        }else{
+        } else {
             //product not found
             productData = new HashMap<>();
             Market marketData = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
-            productData.put(marketName,marketData);
+            productData.put(marketName, marketData);
 
         }
 
