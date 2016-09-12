@@ -59,7 +59,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
         holder.marketName.setText(mMarkets.get(position));
         holder.dateTxt.setText(market.getDate());
         holder.status.setText(""+market.getStatus());
-        holder.usdTxt.setText(""+Math.round(marketHelper.getUsdValue()*market.getStatus()));
+        if(marketHelper.getUsdValue() == null){
+            holder.usdTxt.setVisibility(View.GONE);
+        }else{
+            holder.usdTxt.setText(""+Math.round(marketHelper.getUsdValue()*market.getStatus()));
+        }
         holder.bagsTxt.setText(""+market.getBags());
 
         //TODO add and calc dollar status
