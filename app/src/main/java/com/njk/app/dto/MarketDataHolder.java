@@ -14,6 +14,7 @@ public class MarketDataHolder {
     private ArrayList<String> mProductsList;
     private HashMap<String, ArrayList<String>> mMarkets;
     private Double usdValue;
+    private ArrayList<Message> messageArrayList = new ArrayList<>();
 
 
     public Map<String, HashMap<String, Market>> getProductsData() {
@@ -60,5 +61,13 @@ public class MarketDataHolder {
 
     public void setUsd(Double usd) {
         usdValue = usd;
+    }
+
+    public void setMessageList(ArrayList<Message> list) {
+        messageArrayList = list;
+    }
+
+    public ArrayList<Message> getMessageList() {
+        return messageArrayList;
     }
 }

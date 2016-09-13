@@ -61,13 +61,12 @@ public class MarketHelper implements IMarket {
 
     @Override
     public void setUsdValue(Double usd) {
-            linkData.setUsd(usd);
+        linkData.setUsd(usd);
     }
 
     public void getMarket(String productId, String market) {
         linkData.getMarket(productId, market);
     }
-
 
     public ArrayList<String> getMarket(String productId) {
         return linkData.getMarket(productId);
@@ -75,5 +74,13 @@ public class MarketHelper implements IMarket {
 
     public HashMap<String, Market> getProduct(String productName) {
         return linkData.getProduct(productName);
+    }
+
+    public ArrayList<Message> getMessageList() {
+        return linkData.getMessageList();
+    }
+
+    public void setMessageList(ArrayList<Message> list) {
+        linkData.setMessageList(list);
     }
 }

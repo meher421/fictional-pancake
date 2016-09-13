@@ -1,4 +1,7 @@
-package com.njk.app.dto;
+package com.njk.app.firebase;
+
+import com.njk.app.dto.Market;
+
 
 import java.util.HashMap;
 

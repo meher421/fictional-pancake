@@ -7,12 +7,12 @@ import android.content.Intent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.njk.app.dto.IMarket;
 import com.njk.app.dto.MarketHelper;
-import com.njk.app.dto.ProductModelFirebaseHelper;
+import com.njk.app.dto.Message;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.firebase.ProductModelFirebaseHelper;
 import com.njk.app.testdto.downlink.DayData;
 import com.njk.app.testdto.downlink.DownlinkImpl;
 import com.njk.app.testdto.downlink.IDownLink;
@@ -121,7 +121,6 @@ public class DownlinkIntentService extends IntentService {
             }
         });
 
-
     }
 
     /**
@@ -131,7 +130,6 @@ public class DownlinkIntentService extends IntentService {
     private void handleActionDataInit() {
         // TODO: Handle action Baz
         Logger.i(TAG, "handleActionDataInit ");
-
 
 
         final DatabaseReference database = Firebase.getInstance().getReference();
@@ -146,6 +144,7 @@ public class DownlinkIntentService extends IntentService {
                 //TODO add and parse usd and cal and save
                 ProductModelFirebaseHelper data = dataSnapshot.getValue(ProductModelFirebaseHelper.class);
 //                Logger.i(TAG, " product data : " + data.getProductNames().get("Badam").get("Bodhan").getTimeStamp());
+
 
                 if (data == null) {
                     notifyJobDone();
@@ -177,7 +176,7 @@ public class DownlinkIntentService extends IntentService {
                     marketsMap.put(productName, marketList);
 
 
-                    Logger.i(TAG, "Markets list toString : product:"+productName+" markets :" + marketList.toString());
+                    Logger.i(TAG, "Markets list toString : product:" + productName + " markets :" + marketList.toString());
                 }
                 marketHelper.setMarketsMap(marketsMap);
 
@@ -190,6 +189,35 @@ public class DownlinkIntentService extends IntentService {
                 notifyJobDone();
 
                 Logger.i(TAG, "onCancelled :" + databaseError.getMessage());
+
+            }
+        });
+
+        database.child("Market").child("data").child("messages").orderByKey().startAt("1473777863800").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot == null) {
+                    return;
+                }
+
+                Logger.i(TAG, " messages :  " + dataSnapshot.toString());
+                ArrayList<Message> messageArrayList = new ArrayList<>();
+
+                for (DataSnapshot eventSnapshot : dataSnapshot.getChildren()) {
+
+                    Message message = eventSnapshot.getValue(Message.class);
+//                    Logger.i(TAG, "filtered message :" + message.getTime());
+                    messageArrayList.add(message);
+
+                }
+
+                MarketHelper.getInstance().setMessageList(messageArrayList);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
