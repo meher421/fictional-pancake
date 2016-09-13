@@ -6,10 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.myapplication.R;
 import com.njk.app.dto.Market;
-import com.njk.app.dto.MarketHelper;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.utils.Logger;
 import com.njk.app.utils.Util;
 
@@ -48,18 +47,22 @@ public class AdminMarketEntry extends AppCompatActivity {
         String todaysDate = Util.getTodayDate();
         long millisec = System.currentTimeMillis();
 
+
         Map<String, String> stringMap = new HashMap<>();
         stringMap.put("title", productName);
         stringMap.put("body", marketName);
 
-        DatabaseReference messageRef = FirebaseDatabase.getInstance().getReference("GlobalMarket").child("data").child("messages");
-        messageRef.child(""+millisec).setValue(stringMap);
-//        Market market = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
+        DatabaseReference messageRef = Firebase.getInstance().getReference("GlobalMarket").child("data").child("messages");
+        messageRef.child("" + millisec).setValue(stringMap);
+        Market market = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
+
+
+        Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).setValue(market);
 
 //        HashMap<String, Market> marketHashMap = new HashMap<>(3);
 //        marketHashMap.put(marketName, market);
 
-        HashMap<String, Market> productData = MarketHelper.getInstance().getProduct(productName);
+       /* HashMap<String, Market> productData = MarketHelper.getInstance().getProduct(productName);
 
         if (productData != null) { //product found
             Market marketData = productData.get(marketName);
@@ -87,7 +90,7 @@ public class AdminMarketEntry extends AppCompatActivity {
         productHashMap.put(productName, productData);
 
 
-        FirebaseDatabase.getInstance().getReference("GlobalMarket").child("data").child("products").setValue(productHashMap);
+        FirebaseDatabase.getInstance().getReference("GlobalMarket").child("data").child("products").setValue(productHashMap);*/
         Logger.i(TAG, "data submitted");
 
     }

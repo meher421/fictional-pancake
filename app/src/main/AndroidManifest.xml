@@ -47,6 +47,10 @@
             android:label="Admin Usd Entry"
             android:name="com.njk.app.ui.admin.AdminUsdEntry"
             android:screenOrientation="portrait" />
+        <activity
+            android:label="Admin Misc Operations"
+            android:name="com.njk.app.ui.admin.AdminMiscActvity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

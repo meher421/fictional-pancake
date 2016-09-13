@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.myapplication.R;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.testdto.Product;
 import com.njk.app.testdto.uplink.UpLinkImpl;
 import com.njk.app.testdto.uplink.UpLinkInterface;
@@ -41,8 +42,7 @@ public class AdminTestFragment extends Fragment {
                              Bundle savedInstanceState) {
         getActivity().setTitle("AdminTest");
         // Inflate the layout for this fragment
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Test.createTestData2(database);
+        Test.createTestData2(Firebase.getInstance());
 //        simTest();
         return inflater.inflate(R.layout.fragment_admin_fragmner, container, false);
     }
@@ -51,7 +51,7 @@ public class AdminTestFragment extends Fragment {
     public void simTest() {
         Test.createTestData();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseDatabase database = Firebase.getInstance();
         DatabaseReference dailyMarketRef = database.getReference("DailyMarket");
         dailyMarketRef.removeValue();
         dailyMarket(dailyMarketRef);

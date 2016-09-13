@@ -24,17 +24,17 @@ public interface UpLinkInterface {
 
     ArrayList<Messages> getMessages();
 
-    public void createProduct(int id, String productName, ArrayList<Market> markets);
+    void createProduct(int id, String productName, ArrayList<Market> markets);
 
-    public void editProduct(int id, String productName, ArrayList<Market> market);
+    void editProduct(int id, String productName, ArrayList<Market> market);
 
-    public void deleteProduct(int id);
+    void deleteProduct(int id);
 
-    public void addMarket(int productId, Market market);
+    void addMarket(int productId, Market market);
 
-    public ArrayList<Product> getAllProducts();
+    ArrayList<Product> getAllProducts();
 
-    public Product getProduct(int id);
+    Product getProduct(int id);
 
     void addProduct(Product product);
 }

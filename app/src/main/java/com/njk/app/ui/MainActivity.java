@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startHomeFragment(){
-        getFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment(), "home").commit();
+        getFragmentManager().beginTransaction().replace(R.id.frame,new HomeFragment(), "home").commitAllowingStateLoss();
     }
 
     @Override

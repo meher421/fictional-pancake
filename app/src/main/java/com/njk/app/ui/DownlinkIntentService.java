@@ -12,6 +12,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.njk.app.dto.IMarket;
 import com.njk.app.dto.MarketHelper;
 import com.njk.app.dto.ProductModelFirebaseHelper;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.testdto.downlink.DayData;
 import com.njk.app.testdto.downlink.DownlinkImpl;
 import com.njk.app.testdto.downlink.IDownLink;
@@ -88,7 +89,7 @@ public class DownlinkIntentService extends IntentService {
     private void handleActionFoo(String param1, String param2) {
 
         Logger.i(TAG, "handleActionFoo ");
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference database = Firebase.getInstance().getReference();
         database.child("DailyMarket").child(Util.getTodayDate()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,8 +133,8 @@ public class DownlinkIntentService extends IntentService {
         Logger.i(TAG, "handleActionDataInit ");
 
 
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+
+        final DatabaseReference database = Firebase.getInstance().getReference();
 
 
         database.child("GlobalMarket").child("data").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -176,7 +177,7 @@ public class DownlinkIntentService extends IntentService {
                     marketsMap.put(productName, marketList);
 
 
-                    Logger.i(TAG, "Markets list toString : " + marketList.toString());
+                    Logger.i(TAG, "Markets list toString : product:"+productName+" markets :" + marketList.toString());
                 }
                 marketHelper.setMarketsMap(marketsMap);
 

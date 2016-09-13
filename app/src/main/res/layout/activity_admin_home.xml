@@ -28,4 +28,11 @@
         android:onClick="onUsdEntryClick"
         android:text="USD Entry" />
 
+    <Button
+        android:id="@+id/misc"
+        android:onClick="onMiscClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Misc Operation" />
+
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.myapplication.R;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.ui.adapters.HomeAdapter;
 import com.njk.app.ui.adapters.NotificationAdapter;
 
