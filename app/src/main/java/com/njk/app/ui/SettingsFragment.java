@@ -1,22 +1,39 @@
 package com.njk.app.ui;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 
+import com.myapplication.BuildConfig;
 import com.myapplication.R;
 
 
-public class SettingsFragment extends Fragment {
+public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
+
+    private Preference mVersion;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        getActivity().setTitle(getString(R.string.tit_settings));
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        getActivity().setTitle("Settings");
+
+        PreferenceManager manager = getPreferenceManager();
+        manager.setSharedPreferencesName("settings");
+
+        addPreferencesFromResource(R.xml.app_settings);
+
+        mVersion = findPreference(getString(R.string.key_version));
+        mVersion.setSummary(BuildConfig.VERSION_NAME);
+
+
     }
 
+    @Override
+    public boolean onPreferenceClick(Preference preference) {
+
+        return false;
+    }
 }

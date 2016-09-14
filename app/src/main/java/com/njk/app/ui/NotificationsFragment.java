@@ -9,12 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.myapplication.R;
-import com.njk.app.firebase.Firebase;
-import com.njk.app.ui.adapters.HomeAdapter;
 import com.njk.app.ui.adapters.NotificationAdapter;
 
 
-public class NotificationsFragment extends Fragment {
+public class NotificationsFragment extends Fragment implements NotificationAdapter.onAdapterViewClickListener {
 
     private RecyclerView mRecyclerView;
     private NotificationAdapter mAdapter;
@@ -32,7 +30,7 @@ public class NotificationsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 
-        mAdapter = new NotificationAdapter(getActivity());
+        mAdapter = new NotificationAdapter(getActivity(),this);
 
 
         mRecyclerView.setAdapter(mAdapter);
@@ -42,4 +40,17 @@ public class NotificationsFragment extends Fragment {
     }
 
 
+    @Override
+    public void onAdapterItemClick(View view, int position) {
+
+        MessageDetailFragment fragment = MessageDetailFragment.init(position);
+
+        getFragmentManager().beginTransaction().replace(R.id.frame,fragment, "message").addToBackStack("message").commitAllowingStateLoss();
+
+    }
+
+    @Override
+    public void onAdapterViewClick(View view) {
+
+    }
 }

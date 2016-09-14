@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.njk.app.dto.IMarket;
+import com.njk.app.dto.Market;
 import com.njk.app.dto.MarketHelper;
 import com.njk.app.dto.Message;
 import com.njk.app.firebase.Firebase;
@@ -193,7 +194,8 @@ public class DownlinkIntentService extends IntentService {
             }
         });
 
-        database.child("Market").child("data").child("messages").orderByKey().startAt("1473777863800").addListenerForSingleValueEvent(new ValueEventListener() {
+//        database.child("Market").child("data").child("messages").orderByKey().startAt("1473777863800")
+        database.child("Market").child("data").child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -213,6 +215,8 @@ public class DownlinkIntentService extends IntentService {
                 }
 
                 MarketHelper.getInstance().setMessageList(messageArrayList);
+                ArrayList<Message> list = MarketHelper.getInstance().getMessageList();
+                Logger.i(TAG, "filtered message :" + list.size());
 
             }
 

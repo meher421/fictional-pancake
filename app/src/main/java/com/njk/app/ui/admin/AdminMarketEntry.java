@@ -48,13 +48,7 @@ public class AdminMarketEntry extends AppCompatActivity {
         long millisec = System.currentTimeMillis();
 
 
-        Map<String, String> stringMap = new HashMap<>();
-        stringMap.put("title", productName);
-        stringMap.put("body", marketName);
-        stringMap.put("time", "" + millisec);
 
-        DatabaseReference messageRef = Firebase.getInstance().getReference("Market").child("data").child("messages");
-        messageRef.child(""+millisec).setValue(stringMap);
         Market market = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
 
 

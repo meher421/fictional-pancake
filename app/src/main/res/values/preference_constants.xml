@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="key_rate_us">key_rate_us</string>
+    <string name="summary_rate_us">Show us your support</string>
+    <string name="title_rate_us">Rate</string>
+
+    <string name="key_version">key_app_version</string>
+    <string name="summary_version_name"></string>
+    <string name="title_version">Version</string>
+</resources>

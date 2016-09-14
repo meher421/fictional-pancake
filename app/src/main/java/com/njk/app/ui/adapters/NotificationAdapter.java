@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.myapplication.R;
+import com.njk.app.dto.MarketHelper;
+import com.njk.app.dto.Message;
+
+import java.util.ArrayList;
 
 /**
  * Created by meher on 11/9/16.
@@ -15,10 +19,14 @@ import com.myapplication.R;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.Holder> {
 
+    private ArrayList<Message> messages;
     private Context mContext;
+    private onAdapterViewClickListener clickListener;
 
-    public NotificationAdapter(Context context) {
+    public NotificationAdapter(Context context, onAdapterViewClickListener clickListener) {
         mContext = context;
+        this.clickListener = clickListener;
+        messages = MarketHelper.getInstance().getMessageList();
     }
 
     @Override
@@ -38,12 +46,20 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     private void configureViewHolder(Holder holder, int position) {
-        holder.mTitle.setText("Title");
+        Message message = messages.get(position);
+        holder.mTitle.setText(message.getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return 4;
+        return messages.size();
+    }
+
+    public interface onAdapterViewClickListener {
+        void onAdapterItemClick(View view, int position);
+
+        void onAdapterViewClick(View view);
+
     }
 
     public class Holder extends RecyclerView.ViewHolder {
@@ -54,6 +70,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             super(itemView);
 
             mTitle = (TextView) itemView.findViewById(R.id.notification_title);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickListener.onAdapterItemClick(v, getAdapterPosition());
+                }
+            });
         }
     }
 }

@@ -63,11 +63,12 @@ public class MarketDataHolder {
         usdValue = usd;
     }
 
-    public void setMessageList(ArrayList<Message> list) {
-        messageArrayList = list;
-    }
-
     public ArrayList<Message> getMessageList() {
         return messageArrayList;
+    }
+
+    public void setMessageList(ArrayList<Message> list) {
+        if (list != null)
+            messageArrayList = list;
     }
 }
