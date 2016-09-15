@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.myapplication.R;
-import com.njk.app.utils.Logger;
 import com.njk.app.ui.adapters.ProductDetailAdapter;
+import com.njk.app.utils.Logger;
 
 /**
  * Created by meher on 21/8/16.
@@ -34,26 +34,27 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
 
         productId = getArguments() != null ? getArguments().getString("val") : "";
-
-        Logger.i(TAG,"onCreate : "+productId);
+        if (isVisibleToUser) {
+            getActivity().setTitle(productId);
+        }
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Logger.i(TAG, "oncreateview "+productId);
+        Logger.i(TAG, "oncreateview " + productId);
 
-        getActivity().setTitle(productId);
+
         View view = inflater.inflate(R.layout.product_parent_layout, container, false);
 
-        mRecyclerView =(RecyclerView)view.findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        mAdapter = new ProductDetailAdapter(getActivity(),productId);
+        mAdapter = new ProductDetailAdapter(getActivity(), productId);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
@@ -65,7 +66,7 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        Logger.i(TAG, "onResume "+productId);
+        Logger.i(TAG, "onResume " + productId);
     }
 
     public String getProductId() {

@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fragment = new SettingsFragment();
         } else if (id == R.id.nav_contact_us) {
-            fragment = new AdminTestFragment();
+            fragment = new ContactUsFragment();
         }
 
         getFragmentManager().beginTransaction().replace(R.id.frame,fragment, item.getTitle().toString()).commit();

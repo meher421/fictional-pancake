@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:layout_marginTop="20dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:orientation="vertical">
 
@@ -27,8 +29,9 @@
 
 
     <LinearLayout
+        android:id="@+id/status_layout"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
@@ -36,28 +39,39 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="180" />
+            android:text="\u20B9 180"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/usd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3.5$" />
+            android:text="$3.5"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/market_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="close"
-            android:visibility="gone" />
+            android:text="closed" />
 
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/status_layout"
+        android:layout_toRightOf="@+id/status_layout"
+        android:src="@drawable/ic_arrow_upward" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:orientation="vertical">
 
