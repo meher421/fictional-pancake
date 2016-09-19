@@ -18,9 +18,10 @@
 
 
     <string-array name="status">
+        <item>Up</item>
         <item>Down</item>
         <item>Steady</item>
-        <item>Up</item>
+        <item>Closed</item>
 
     </string-array>
 </resources>

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
@@ -12,13 +14,12 @@ import com.njk.app.firebase.Firebase;
 import com.njk.app.utils.Logger;
 import com.njk.app.utils.Util;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class AdminMarketEntry extends AppCompatActivity {
+public class AdminMarketEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static String TAG = "AdminMarket-123456";
-    TextInputLayout mMarketText, mProductText, mBagsText, mMarketStatus, mStatusText;
+    private TextInputLayout mMarketText, mProductText, mBagsText, mStatusText;
+    private Spinner mSpinner;
+    private int mMarketStatus = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,10 @@ public class AdminMarketEntry extends AppCompatActivity {
         mProductText = (TextInputLayout) findViewById(R.id.product_name);
         mBagsText = (TextInputLayout) findViewById(R.id.bags);
 
-        mMarketStatus = (TextInputLayout) findViewById(R.id.market_status);
+        mSpinner = (Spinner) findViewById(R.id.market_status);
         mStatusText = (TextInputLayout) findViewById(R.id.status);
 
+        mSpinner.setOnItemSelectedListener(this);
 
     }
 
@@ -40,7 +42,7 @@ public class AdminMarketEntry extends AppCompatActivity {
 
         String productName = mProductText.getEditText().getText().toString();
         String marketName = mMarketText.getEditText().getText().toString();
-        int marketStatus = Integer.parseInt(mMarketStatus.getEditText().getText().toString());
+//        int marketStatus = Integer.parseInt(mSpinner.get);
         Double status = Double.parseDouble(mStatusText.getEditText().getText().toString());
         int bags = Integer.parseInt(mBagsText.getEditText().getText().toString());
 
@@ -48,45 +50,34 @@ public class AdminMarketEntry extends AppCompatActivity {
         long millisec = System.currentTimeMillis();
 
 
-
-        Market market = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
+        Market market = new Market(marketName, status, mMarketStatus, bags, todaysDate, millisec);
 
 
         Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).setValue(market);
 
-//        HashMap<String, Market> marketHashMap = new HashMap<>(3);
-//        marketHashMap.put(marketName, market);
 
-       /* HashMap<String, Market> productData = MarketHelper.getInstance().getProduct(productName);
+        DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child(""+Util.getTodayDateInMills());
 
-        if (productData != null) { //product found
-            Market marketData = productData.get(marketName);
-            if (marketData != null) { //product found
-                marketData.setName(marketName);
-                marketData.setStatus(status);
-                marketData.setState(marketStatus);
-                marketData.setDate(todaysDate);
-                marketData.setBags(bags);
-            } else { //market not found
-                marketData = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
-                productData.put(marketName, marketData);
-            }
+        dateRef.child("date").setValue(todaysDate);
+//        dateRef.child("lastUpdated").setValue(linkInterface.getUpdatedTime());
 
-        } else {
-            //product not found
-            productData = new HashMap<>();
-            Market marketData = new Market(marketName, status, marketStatus, bags, todaysDate, millisec);
-            productData.put(marketName, marketData);
+        DatabaseReference productRef = dateRef.child("products");
 
-        }
-
-        Map<String, HashMap<String, Market>> productHashMap = MarketHelper.getInstance().getProductsData();
-
-        productHashMap.put(productName, productData);
+        productRef.child(productName).child(marketName).setValue(market);
 
 
-        FirebaseDatabase.getInstance().getReference("GlobalMarket").child("data").child("products").setValue(productHashMap);*/
         Logger.i(TAG, "data submitted");
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        mMarketStatus = position;
+        Logger.i(TAG, "Spinner selected item :" + position);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

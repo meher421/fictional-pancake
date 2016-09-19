@@ -14,6 +14,7 @@ import com.njk.app.dto.MarketHelper;
 import com.njk.app.utils.AppConstants;
 import com.njk.app.utils.Logger;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -68,7 +69,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
 
     private void setStatus(Market market, Holder holder) {
         int state = market.getState();
-        if (state < 4) {
+        if (state < AppConstants.MarketConstants.MARKET_STEADY) {
             holder.usdTxt.setVisibility(View.VISIBLE);
             holder.status.setVisibility(View.VISIBLE);
             holder.state.setVisibility(View.VISIBLE);
@@ -78,7 +79,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
             if (marketHelper.getUsdValue() == null) {
                 holder.usdTxt.setVisibility(View.GONE);
             } else {
-                holder.usdTxt.setText("$ " + Math.round(marketHelper.getUsdValue() * market.getStatus()));
+//                holder.usdTxt.setText("$ " + (double)Math.round(market.getStatus() / marketHelper.getUsdValue()));
+                holder.usdTxt.setText("$ " + new BigDecimal(market.getStatus() / marketHelper.getUsdValue()).setScale(2,BigDecimal.ROUND_HALF_UP));
             }
             if (state == AppConstants.MarketConstants.MARKET_UP)
                 holder.state.setImageResource(R.drawable.ic_arrow_upward);

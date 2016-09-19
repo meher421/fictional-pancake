@@ -70,7 +70,9 @@ public class SplashFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+
         mActivity.unregisterReceiver(mBroadcastReceiver);
+
     }
 
     Handler.Callback mCallBack = new Handler.Callback() {
@@ -94,8 +96,10 @@ public class SplashFragment extends Fragment {
     };
 
     private void launchHomeFragment() {
-        if(launch)
-           mActivity.startHomeFragment();
+        if(launch){
+            mHandler.removeMessages(MSG_TIME_OUT);
+            mActivity.startHomeFragment();
+        }
         else{
             Logger.i(TAG,"still preparing for launch");
         }

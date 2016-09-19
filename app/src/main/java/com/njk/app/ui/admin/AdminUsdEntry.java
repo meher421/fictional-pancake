@@ -5,8 +5,10 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.Util;
 
 public class AdminUsdEntry extends AppCompatActivity {
 
@@ -31,6 +33,10 @@ public class AdminUsdEntry extends AppCompatActivity {
         Double dValue = Double.parseDouble(value);
 
         Firebase.getInstance().getReference("GlobalMarket").child("data").child("usd").setValue(dValue);
+
+        DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child(Util.getTodayDateInMills());
+
+        dateRef.child("dollar").setValue(dValue);
 
     }
 }
