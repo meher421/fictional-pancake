@@ -3,30 +3,40 @@ package com.njk.app.ui.admin;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
 import com.njk.app.dto.Market;
+import com.njk.app.dto.MarketHelper;
 import com.njk.app.firebase.Firebase;
 import com.njk.app.utils.Logger;
 import com.njk.app.utils.Util;
 
+import java.util.ArrayList;
+
 public class AdminMarketEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static String TAG = "AdminMarket-123456";
-    private TextInputLayout mMarketText, mProductText, mBagsText, mStatusText;
-    private Spinner mSpinner;
+    private ArrayList<String> products, mMarkets;
+    private ArrayAdapter<String> marketAdapter;
+    private TextInputLayout mMarketTextLayout, mProductText, mBagsText, mStatusText;
+    private Spinner mSpnProductName, mSpnMarketName, mSpinner;
     private int mMarketStatus = 1;
+    private String mProductName, mMarketName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_market_entry);
 
-        mMarketText = (TextInputLayout) findViewById(R.id.market_name);
+        mSpnProductName = (Spinner) findViewById(R.id.spn_product_name);
+        mSpnMarketName = (Spinner) findViewById(R.id.spn_market_name);
+        mMarketTextLayout = (TextInputLayout) findViewById(R.id.market_name);
         mProductText = (TextInputLayout) findViewById(R.id.product_name);
         mBagsText = (TextInputLayout) findViewById(R.id.bags);
 
@@ -34,37 +44,61 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
         mStatusText = (TextInputLayout) findViewById(R.id.status);
 
         mSpinner.setOnItemSelectedListener(this);
+        mSpnProductName.setOnItemSelectedListener(this);
+        mSpnMarketName.setOnItemSelectedListener(this);
 
+        products = MarketHelper.getInstance().getProductNames();
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        adapter.add("NONE");
+        adapter.addAll(products);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpnProductName.setAdapter(adapter);
+
+
+        marketAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
+        marketAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSpnMarketName.setAdapter(marketAdapter);
     }
 
 
     public void onSubmit(View view) {
 
-        String productName = mProductText.getEditText().getText().toString();
-        String marketName = mMarketText.getEditText().getText().toString();
+        String productName = (mProductText.getVisibility() == View.VISIBLE) ? mProductText.getEditText().getText().toString() : mProductName;
+        String marketName = (mMarketTextLayout.getVisibility() == View.VISIBLE) ? mMarketTextLayout.getEditText().getText().toString() : mMarketName;
 //        int marketStatus = Integer.parseInt(mSpinner.get);
-        Double status = Double.parseDouble(mStatusText.getEditText().getText().toString());
-        int bags = Integer.parseInt(mBagsText.getEditText().getText().toString());
+        String statusText = mStatusText.getEditText().getText().toString();
+        Logger.i("123456", "status text :" + statusText);
+
 
         String todaysDate = Util.getTodayDate();
         long millisec = System.currentTimeMillis();
+        Market market = null;
 
+        if (TextUtils.isEmpty(statusText)) {
+            market = MarketHelper.getInstance().getProduct(productName).get(marketName);
+            if (market == null) {
+                return;
+            }
+            market.setState(mMarketStatus);
+            market.setDate(todaysDate);
+            market.setTimeStamp(millisec);
 
-        Market market = new Market(marketName, status, mMarketStatus, bags, todaysDate, millisec);
+        } else {
+            Double status = Double.parseDouble(statusText);
+            int bags = Integer.parseInt(mBagsText.getEditText().getText().toString());
+            market = new Market(marketName, status, mMarketStatus, bags, todaysDate, millisec);
+        }
 
 
         Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).setValue(market);
 
 
-        DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child(""+Util.getTodayDateInMills());
-
+        DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child("" + Util.getTodayDateInMills());
         dateRef.child("date").setValue(todaysDate);
-//        dateRef.child("lastUpdated").setValue(linkInterface.getUpdatedTime());
-
         DatabaseReference productRef = dateRef.child("products");
-
         productRef.child(productName).child(marketName).setValue(market);
-
 
         Logger.i(TAG, "data submitted");
 
@@ -72,8 +106,40 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        mMarketStatus = position;
         Logger.i(TAG, "Spinner selected item :" + position);
+        if (parent.getId() == R.id.spn_product_name) {
+
+            if (position > 0) {
+                mProductText.setVisibility(View.INVISIBLE);
+                marketAdapter.clear();
+                mMarkets = MarketHelper.getInstance().getMarketsMap().get(products.get(position - 1));
+
+                marketAdapter.add("NONE");
+                marketAdapter.addAll(mMarkets);
+                mProductName = products.get(position - 1);
+
+            } else {
+                mProductText.setVisibility(View.VISIBLE);
+                marketAdapter.clear();
+                mProductName = "";
+            }
+
+            marketAdapter.notifyDataSetChanged();
+
+        } else if (parent.getId() == R.id.spn_market_name) {
+            if (position > 0) {
+                mMarketTextLayout.setVisibility(View.INVISIBLE);
+                mMarketName = mMarkets.get(position - 1);
+            } else {
+                mMarketTextLayout.setVisibility(View.VISIBLE);
+                mMarketName = "";
+            }
+
+        } else if (parent.getId() == R.id.market_status) {
+            mMarketStatus = position;
+            Logger.i(TAG, "Spinner selected item :" + position);
+        }
+
     }
 
     @Override
