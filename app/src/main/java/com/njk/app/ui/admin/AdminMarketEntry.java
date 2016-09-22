@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
@@ -69,6 +70,7 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
         String marketName = (mMarketTextLayout.getVisibility() == View.VISIBLE) ? mMarketTextLayout.getEditText().getText().toString() : mMarketName;
 //        int marketStatus = Integer.parseInt(mSpinner.get);
         String statusText = mStatusText.getEditText().getText().toString();
+        String bags = mBagsText.getEditText().getText().toString();
         Logger.i("123456", "status text :" + statusText);
 
 
@@ -79,16 +81,19 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
         if (TextUtils.isEmpty(statusText)) {
             market = MarketHelper.getInstance().getProduct(productName).get(marketName);
             if (market == null) {
+                Toast.makeText(this, "Market not found", Toast.LENGTH_SHORT).show();
                 return;
             }
             market.setState(mMarketStatus);
             market.setDate(todaysDate);
             market.setTimeStamp(millisec);
+            if (!TextUtils.isEmpty(bags))
+                market.setBags(Integer.parseInt(bags));
 
         } else {
             Double status = Double.parseDouble(statusText);
-            int bags = Integer.parseInt(mBagsText.getEditText().getText().toString());
-            market = new Market(marketName, status, mMarketStatus, bags, todaysDate, millisec);
+            int bagsNo = Integer.parseInt(bags);
+            market = new Market(marketName, status, mMarketStatus, bagsNo, todaysDate, millisec);
         }
 
 
