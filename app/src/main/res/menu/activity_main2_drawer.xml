@@ -25,11 +25,6 @@
             android:icon="@drawable/ic_menu_send"
             android:title="@string/tit_contact_us" />
 
-        <item
-            android:id="@+id/admin"
-            android:icon="@drawable/ic_menu_send"
-            android:title="Admin" />
-
     </group>
 
 
