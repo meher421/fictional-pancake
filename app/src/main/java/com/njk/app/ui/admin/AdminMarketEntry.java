@@ -53,7 +53,8 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
         adapter.add("NONE");
-        adapter.addAll(products);
+        if (products != null)
+            adapter.addAll(products);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSpnProductName.setAdapter(adapter);
 
@@ -120,7 +121,8 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
                 mMarkets = MarketHelper.getInstance().getMarketsMap().get(products.get(position - 1));
 
                 marketAdapter.add("NONE");
-                marketAdapter.addAll(mMarkets);
+                if (mMarkets != null)
+                    marketAdapter.addAll(mMarkets);
                 mProductName = products.get(position - 1);
 
             } else {

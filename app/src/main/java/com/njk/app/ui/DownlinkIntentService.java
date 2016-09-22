@@ -151,16 +151,20 @@ public class DownlinkIntentService extends IntentService {
                     notifyJobDone();
                     return;
                 }
-
+                HashMap<String, HashMap<String, Market>> productData = data.getProducts();
+                if (productData == null) {
+                    notifyJobDone();
+                    return;
+                }
                 //Complete data.
                 IMarket marketHelper = MarketHelper.getInstance();
-                marketHelper.setProductsData(data.getProducts());
+                marketHelper.setProductsData(productData);
                 marketHelper.setUsdValue(data.getUsd());
 
 //                Logger.i(TAG, " product data 2 : " + marketHelper.getProductsData().get("Badam").get("Bodhan").getBags());
 
                 //Product names which will be used as keys.
-                Object[] products = data.getProducts().keySet().toArray();
+                Object[] products = productData.keySet().toArray();
 
                 ArrayList list = new ArrayList(Arrays.asList(products));
                 marketHelper.setProductsNames(list);
