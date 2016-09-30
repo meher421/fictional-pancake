@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.Util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,6 +48,8 @@ public class AdminMessageEntry extends AppCompatActivity {
 
         DatabaseReference messageRef = Firebase.getInstance().getReference("Market").child("data").child("messages");
         messageRef.child("" + millisec).setValue(stringMap);
+
+        Util.displayToast("Success");
 
 
     }

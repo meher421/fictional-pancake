@@ -1,5 +1,9 @@
 package com.njk.app.utils;
 
+import android.widget.Toast;
+
+import com.njk.app.ui.NjkApplication;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +15,12 @@ import java.util.Date;
 
 public class Util {
 
+
+    public static void displayToast(String msg) {
+
+        Toast.makeText(NjkApplication.mAppContext, "" + msg, Toast.LENGTH_SHORT).show();
+
+    }
 
     public static String getTodayDate() {
 
@@ -41,6 +51,6 @@ public class Util {
             timeMills = date.getTime();
         Logger.i("123456", " Todays date : " + timeMills);
 
-        return ""+timeMills;
+        return "" + timeMills;
     }
 }

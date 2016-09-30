@@ -3,6 +3,7 @@ package com.njk.app.ui.admin;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +31,10 @@ public class AdminUsdEntry extends AppCompatActivity {
 
 
         String value = textInputLayout.getEditText().getText().toString();
+        if (TextUtils.isEmpty(value)) {
+            Util.displayToast("enter the value");
+            return;
+        }
         Double dValue = Double.parseDouble(value);
 
         Firebase.getInstance().getReference("GlobalMarket").child("data").child("usd").setValue(dValue);
@@ -37,6 +42,10 @@ public class AdminUsdEntry extends AppCompatActivity {
         DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child(Util.getTodayDateInMills());
 
         dateRef.child("dollar").setValue(dValue);
+
+        textInputLayout.getEditText().setText("");
+        Util.displayToast("Success");
+
 
     }
 }
