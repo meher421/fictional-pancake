@@ -5,13 +5,11 @@ package com.njk.app.cloudmsg;
  */
 import android.util.Log;
 
-import com.example.meher.c.myapplication.backend.registration.Registration;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.njk.backend.registration.Registration;
 
 import java.io.IOException;
 

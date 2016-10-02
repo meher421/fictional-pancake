@@ -15,10 +15,9 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.myapplication.R;
 import com.njk.app.ui.MainActivity;
 
-import sonim.com.flash.MainActivity;
-import sonim.com.flash.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
