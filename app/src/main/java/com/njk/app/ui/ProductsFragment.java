@@ -33,16 +33,7 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
         return fragment;
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
 
-        productId = getArguments() != null ? getArguments().getString("val") : "";
-        if (isVisibleToUser) {
-            getActivity().setTitle(productId);
-        }
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,6 +44,7 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.product_parent_layout, container, false);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        productId = getArguments() != null ? getArguments().getString("val") : "";
 
         mAdapter = new ProductDetailAdapter(getActivity(), productId);
 

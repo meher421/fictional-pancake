@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewGroup;
 
 import com.myapplication.R;
 import com.njk.app.utils.Logger;
@@ -27,6 +29,7 @@ public class ProductActivity extends AppCompatActivity {
     private Context mContext;
     private ArrayList<String> mProducts;
     private IMarket market;
+    private ActionBar mActionBar;
 
     private String TAG = "ProductActivity-123456";
 
@@ -46,6 +49,8 @@ public class ProductActivity extends AppCompatActivity {
         mProducts = MarketHelper.getInstance().getProductNames();
 
         Logger.i(TAG,"mProducts :"+mProducts.toString());
+        mActionBar = getSupportActionBar();
+        mActionBar.setTitle(mProducts.get(position));
 
         market = MarketHelper.getInstance();
         int productsCount = mProducts.size();
@@ -72,6 +77,12 @@ public class ProductActivity extends AppCompatActivity {
         public int getCount() {
             int size = mProducts.size();
             return size;
+        }
+
+        @Override
+        public void setPrimaryItem(ViewGroup container, int position, Object object) {
+            super.setPrimaryItem(container, position, object);
+            mActionBar.setTitle(mProducts.get(position));
         }
 
 
