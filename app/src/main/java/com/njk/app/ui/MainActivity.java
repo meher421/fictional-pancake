@@ -11,14 +11,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.myapplication.R;
 import com.njk.app.utils.Logger;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private String TAG = "MainActivity-123456";
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +31,18 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View hearder = navigationView.getHeaderView(0);
+        ImageView imageView = (ImageView) hearder.findViewById(R.id.imageView);
+        imageView.setOnClickListener(this);
 
         getFragmentManager().beginTransaction().replace(R.id.frame, new SplashFragment(), "splash").commit();
 
@@ -106,8 +113,19 @@ public class MainActivity extends AppCompatActivity
         getFragmentManager().beginTransaction().replace(R.id.frame, fragment, item.getTitle().toString()).commit();
         Logger.i(TAG, "adding fragment :" + item.getTitle().toString());
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if (R.id.imageView == v.getId()) {
+
+//            getFragmentManager().beginTransaction().replace(R.id.frame, SigninFragment.newInstance(), "signin").commit();
+//            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }
+
     }
 }
