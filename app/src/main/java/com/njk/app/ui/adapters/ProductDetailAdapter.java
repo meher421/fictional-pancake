@@ -57,6 +57,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     }
 
     private void configureViewHolder(Holder holder, int position) {
+        if (position == 0) {
+            holder.mTitleLayout.setVisibility(View.VISIBLE);
+        } else {
+            holder.mTitleLayout.setVisibility(View.GONE);
+        }
         Market market = marketHashMap.get(mMarkets.get(position));
 
         holder.marketName.setText(mMarkets.get(position));
@@ -80,7 +85,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
                 holder.usdTxt.setVisibility(View.GONE);
             } else {
 //                holder.usdTxt.setText("$ " + (double)Math.round(market.getStatus() / marketHelper.getUsdValue()));
-                holder.usdTxt.setText("$ " + new BigDecimal(market.getStatus() / marketHelper.getUsdValue()).setScale(2,BigDecimal.ROUND_HALF_UP));
+                holder.usdTxt.setText("$ " + new BigDecimal(market.getStatus() / marketHelper.getUsdValue()).setScale(2, BigDecimal.ROUND_HALF_UP));
             }
             if (state == AppConstants.MarketConstants.MARKET_UP)
                 holder.state.setImageResource(R.drawable.ic_arrow_upward);
@@ -109,10 +114,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
     public class Holder extends RecyclerView.ViewHolder {
         TextView marketName, dateTxt, status, marketStatus, usdTxt, bagsTxt;
         ImageView state;
+        View mTitleLayout;
 
         public Holder(View itemView) {
             super(itemView);
-
+            mTitleLayout = itemView.findViewById(R.id.title_layout);
             marketName = (TextView) itemView.findViewById(R.id.market_place);
             dateTxt = (TextView) itemView.findViewById(R.id.date);
             status = (TextView) itemView.findViewById(R.id.status);

@@ -7,23 +7,61 @@
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp">
 
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Market"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Status"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Bags"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/market_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/title_layout"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/market_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nizamabad" />
+            android:text="Nizamabad"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5-09-2016" />
+            android:text="5-09-2016"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
     </LinearLayout>
 
@@ -32,6 +70,8 @@
         android:id="@+id/status_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/market_layout"
+        android:layout_below="@+id/title_layout"
         android:layout_centerInParent="true"
         android:orientation="vertical">
 
@@ -40,20 +80,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="\u20B9 180"
-            android:visibility="gone" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/usd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$3.5"
-            android:visibility="gone" />
+            android:text="$ 3.5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <TextView
             android:id="@+id/market_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="closed" />
+            android:text="closed"
+            android:visibility="gone" />
 
 
     </LinearLayout>
@@ -62,9 +103,9 @@
         android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_below="@+id/title_layout"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/status_layout"
         android:layout_toRightOf="@+id/status_layout"
         android:src="@drawable/ic_arrow_upward" />
@@ -73,13 +114,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:layout_below="@+id/title_layout"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/bags_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1000" />
+            android:text="1000"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </LinearLayout>
 
