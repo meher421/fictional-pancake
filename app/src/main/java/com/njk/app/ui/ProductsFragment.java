@@ -65,6 +65,11 @@ public class ProductsFragment extends Fragment implements View.OnClickListener {
         return productId;
     }
 
+    public void refreshAdapterData(){
+        Logger.i(TAG, "refreshAdapterData ");
+        mAdapter.refreshAdapterData();
+    }
+
     @Override
     public void onClick(View v) {
 

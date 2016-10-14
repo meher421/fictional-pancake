@@ -5,11 +5,11 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
     defaultConfig {
-        applicationId "com.ttjj.app"
+        applicationId "com.njk.app"
         minSdkVersion 15
         targetSdkVersion 24
-        versionCode 2
-        versionName "0.13"
+        versionCode 3
+        versionName "0.14"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 

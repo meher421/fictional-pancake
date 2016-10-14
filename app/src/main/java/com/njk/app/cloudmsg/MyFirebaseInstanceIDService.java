@@ -9,6 +9,7 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
+import com.njk.app.utils.AppConstants;
 import com.njk.backend.registration.Registration;
 
 import java.io.IOException;
@@ -69,7 +70,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
                  new AndroidJsonFactory(), null)
                  .setApplicationName("Njk App")
 //                 .setRootUrl("https://fcm-test-141505.appspot.com/_ah/api/");
-                 .setRootUrl("https://njk-web-app.appspot.com/_ah/api/");
+                 .setRootUrl(AppConstants.FCM_API_URL);
         Registration regService = builder.build();
         regService.register(token).execute();
     }

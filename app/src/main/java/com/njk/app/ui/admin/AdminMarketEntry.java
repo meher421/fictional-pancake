@@ -15,10 +15,24 @@ import com.myapplication.R;
 import com.njk.app.dto.Market;
 import com.njk.app.dto.MarketHelper;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.HttpThread;
 import com.njk.app.utils.Logger;
 import com.njk.app.utils.Util;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class AdminMarketEntry extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -108,6 +122,8 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
 
         Logger.i(TAG, "data submitted");
 
+        new HttpThread().start();
+
     }
 
     @Override
@@ -153,5 +169,6 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
 }
 

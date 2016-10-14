@@ -56,6 +56,13 @@ public class ProductDetailAdapter extends RecyclerView.Adapter<ProductDetailAdap
         configureViewHolder(holder, position);
     }
 
+    public void refreshAdapterData(){
+        Logger.i(TAG, "refreshAdapterData ");
+        marketHashMap = marketHelper.getProductsData().get(mProductId);
+        notifyDataSetChanged();
+    }
+
+
     private void configureViewHolder(Holder holder, int position) {
         if (position == 0) {
             holder.mTitleLayout.setVisibility(View.VISIBLE);
