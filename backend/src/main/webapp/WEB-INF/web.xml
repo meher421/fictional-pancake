@@ -22,6 +22,35 @@
         <url-pattern>/_ah/spi/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>LogServlet</servlet-name>
+        <servlet-class>com.njk.backend.LogsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogServlet</servlet-name>
+        <url-pattern>/logs</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>send</servlet-name>
+        <servlet-class>com.njk.backend.MessageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>send</servlet-name>
+        <url-pattern>/send</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.njk.backend.RegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
