@@ -136,7 +136,7 @@ public class DownlinkIntentService extends IntentService {
         final DatabaseReference database = Firebase.getInstance().getReference();
 
 
-        database.child("GlobalMarket").child("data").addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("Tulip").child("data").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -199,7 +199,7 @@ public class DownlinkIntentService extends IntentService {
         });
 
 //        database.child("Market").child("data").child("messages").orderByKey().startAt("1473777863800")
-        database.child("Market").child("data").child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
+        database.child("Maple").child("data").child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
