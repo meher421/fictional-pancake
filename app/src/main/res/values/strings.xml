@@ -15,6 +15,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_info_text">\n\n\n Nischay J Katariya \n C/o: Jethalal J Katariya, \n 11-1-966, \n New NGO\'s Colony, \n Nizamabad, \n Telangana-503002, \n India
+        \n \n Call us: \n \n Nischay Katariya : +91 9949059028 \n Jethalal Katariya : +91 9849059028  \n \nEmail us: \n njkatariya1607@gmail.com
+    </string>
 
 
     <string-array name="status">
