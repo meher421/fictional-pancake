@@ -7,6 +7,7 @@ import com.njk.app.ui.NjkApplication;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -52,5 +53,17 @@ public class Util {
         Logger.i("123456", " Todays date : " + timeMills);
 
         return "" + timeMills;
+    }
+
+    public static String getTodayDate(String milliSec) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(Long.parseLong(milliSec));
+
+//        int mYear = calendar.get(Calendar.YEAR);
+        int mMonth = calendar.get(Calendar.MONTH);
+        int mDay = calendar.get(Calendar.DAY_OF_MONTH);
+
+        return mDay+"/"+mMonth;
     }
 }

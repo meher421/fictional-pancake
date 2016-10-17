@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.myapplication.R;
 import com.njk.app.dto.MarketHelper;
 import com.njk.app.dto.Message;
+import com.njk.app.utils.Util;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private void configureViewHolder(Holder holder, int position) {
         Message message = messages.get(position);
         holder.mTitle.setText(message.getTitle());
+        holder.mTime.setText(Util.getTodayDate(message.getTime()));
     }
 
     @Override
@@ -64,12 +66,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public class Holder extends RecyclerView.ViewHolder {
 
-        TextView mTitle;
+        TextView mTitle, mTime;
 
         public Holder(View itemView) {
             super(itemView);
 
             mTitle = (TextView) itemView.findViewById(R.id.notification_title);
+            mTime = (TextView) itemView.findViewById(R.id.notification_time);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

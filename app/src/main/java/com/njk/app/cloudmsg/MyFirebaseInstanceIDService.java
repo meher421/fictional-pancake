@@ -68,7 +68,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
 
          Registration.Builder builder = new Registration.Builder(AndroidHttp.newCompatibleTransport(),
                  new AndroidJsonFactory(), null)
-                 .setApplicationName("Njk App")
+                 .setApplicationName("TTJJ")
 //                 .setRootUrl("https://fcm-test-141505.appspot.com/_ah/api/");
                  .setRootUrl(AppConstants.FCM_API_URL);
         Registration regService = builder.build();
