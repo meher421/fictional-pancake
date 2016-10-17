@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.HttpThread;
 import com.njk.app.utils.Util;
 
 import java.util.HashMap;
@@ -50,6 +51,8 @@ public class AdminMessageEntry extends AppCompatActivity {
         messageRef.child("" + millisec).setValue(stringMap);
 
         Util.displayToast("Success");
+
+        new HttpThread().start();
 
 
     }

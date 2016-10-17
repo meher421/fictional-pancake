@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.HttpThread;
 
 /**
  * Created by meher on 13/9/16.
@@ -48,6 +49,8 @@ public class AdminMiscActvity extends AppCompatActivity {
         }
 
         Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).removeValue();
+
+        new HttpThread().start();
 
     }
 

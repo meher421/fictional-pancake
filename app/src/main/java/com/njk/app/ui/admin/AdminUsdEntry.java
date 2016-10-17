@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.firebase.database.DatabaseReference;
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
+import com.njk.app.utils.HttpThread;
 import com.njk.app.utils.Util;
 
 public class AdminUsdEntry extends AppCompatActivity {
@@ -45,6 +46,8 @@ public class AdminUsdEntry extends AppCompatActivity {
 
         textInputLayout.getEditText().setText("");
         Util.displayToast("Success");
+
+        new HttpThread().start();
 
 
     }
