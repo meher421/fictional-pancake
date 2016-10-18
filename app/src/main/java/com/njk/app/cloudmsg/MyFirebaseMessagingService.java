@@ -13,12 +13,18 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.myapplication.R;
 import com.njk.app.firebase.Firebase;
 import com.njk.app.ui.DownlinkIntentService;
 import com.njk.app.ui.MainActivity;
+import com.njk.app.ui.NjkApplication;
+import com.njk.app.utils.Logger;
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -57,10 +63,33 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
+        Firebase.getInstance().addPresenceListener();
+       /* final DatabaseReference connectedRef = Firebase.getInstance().getDatabase().getReference(".info/connected");
+        connectedRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                boolean connected = snapshot.getValue(Boolean.class);
+                Logger.e(TAG,""+snapshot.toString());
+                if (connected) {
+                    Logger.e(TAG,"connected");
+                    DownlinkIntentService.startActionDataInit(NjkApplication.mAppContext);
+                } else {
+                    Logger.e(TAG,"not connected");
+//                    connectedRef.removeEventListener(this);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Logger.e(TAG,"Listener was cancelled");
+            }
+        });*/
+        DownlinkIntentService.startActionDataInit(NjkApplication.mAppContext);
 //        sendNotification(remoteMessage.getData().get("message"));
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
-        DownlinkIntentService.startActionDataInit(this);
+//
+        Firebase.getInstance().goOnline();
     }
     // [END receive_message]
 

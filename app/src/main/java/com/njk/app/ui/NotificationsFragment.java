@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.myapplication.R;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.ui.adapters.NotificationAdapter;
 
 
@@ -34,6 +35,7 @@ public class NotificationsFragment extends Fragment implements NotificationAdapt
 
 
         mRecyclerView.setAdapter(mAdapter);
+//        Firebase.getInstance().goOnline();
 
         // Inflate the layout for this fragment
         return view;
