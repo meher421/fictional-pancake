@@ -16,6 +16,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.myapplication.R;
+import com.njk.app.firebase.Firebase;
 import com.njk.app.ui.DownlinkIntentService;
 import com.njk.app.ui.MainActivity;
 
