@@ -90,7 +90,7 @@ public class DownlinkIntentService extends IntentService {
     private void handleActionFoo(String param1, String param2) {
 
         Logger.i(TAG, "handleActionFoo ");
-        final DatabaseReference database = Firebase.getInstance().getReference();
+        final DatabaseReference database = Firebase.getInstance().getDatabase().getReference();
         database.child("DailyMarket").child(Util.getTodayDate()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -133,8 +133,7 @@ public class DownlinkIntentService extends IntentService {
         Logger.i(TAG, "handleActionDataInit ");
 
 
-        final DatabaseReference database = Firebase.getInstance().getReference();
-
+        final DatabaseReference database = Firebase.getInstance().getDatabase().getReference();
 
         database.child("Tulip").child("data").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -198,6 +197,7 @@ public class DownlinkIntentService extends IntentService {
             }
         });
 
+        database.child("Maple").child("data").child("messages").keepSynced(true);
 //        database.child("Market").child("data").child("messages").orderByKey().startAt("1473777863800")
         database.child("Maple").child("data").child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -231,6 +231,10 @@ public class DownlinkIntentService extends IntentService {
         });
 
 
+
+
+        Logger.i(TAG,"Completed fetching data");
+
     }
 
 
@@ -238,6 +242,8 @@ public class DownlinkIntentService extends IntentService {
         Intent intent = new Intent();
         intent.setAction(ACTION_INIT_COMPLETE);
         sendBroadcast(intent);
+        Firebase.getInstance().goOffline();
+        Firebase.getInstance().removePresenceListener();
     }
 
     @Override
