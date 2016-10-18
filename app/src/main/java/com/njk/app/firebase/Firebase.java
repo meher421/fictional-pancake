@@ -1,5 +1,6 @@
 package com.njk.app.firebase;
 
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
@@ -10,6 +11,8 @@ public class Firebase {
 
     private static FirebaseDatabase database;
     private static Firebase mInstance;
+    private static DatabaseReference mPresenceReference;
+    private static PresenceValueEventListener mPresenceListener;
 
     private Firebase() {
     }
@@ -17,6 +20,7 @@ public class Firebase {
     public static Firebase getInstance() {
         if (mInstance == null) {
             mInstance = new Firebase();
+
         }
         return mInstance;
     }
@@ -25,6 +29,9 @@ public class Firebase {
     public FirebaseDatabase getDatabase() {
         if (database == null) {
             database = FirebaseDatabase.getInstance();
+            mPresenceReference = database.getReference(".info/connected");
+            mPresenceListener = new PresenceValueEventListener();
+            mPresenceReference.addValueEventListener(mPresenceListener);
 //            database.setPersistenceEnabled(true);
 //            database.goOnline();
 
@@ -34,12 +41,20 @@ public class Firebase {
 
     public void goOffline() {
         if (database != null) {
-            database.goOffline();
+//            database.goOffline();
         }
     }
     public void goOnline() {
         if (database != null) {
-            database.goOnline();
+//            database.goOnline();
         }
+    }
+
+    public void addPresenceListener (){
+//        mPresenceReference.addValueEventListener(mPresenceListener);
+    }
+
+    public void removePresenceListener(){
+//        mPresenceReference.removeEventListener(mPresenceListener);
     }
 }
