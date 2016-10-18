@@ -47,7 +47,7 @@ public class AdminMessageEntry extends AppCompatActivity {
         stringMap.put("body", message);
         stringMap.put("time", "" + millisec);
 
-        DatabaseReference messageRef = Firebase.getInstance().getReference("Maple").child("data").child("messages");
+        DatabaseReference messageRef = Firebase.getInstance().getDatabase().getReference("Maple").child("data").child("messages");
         messageRef.child("" + millisec).setValue(stringMap);
 
         Util.displayToast("Success");

@@ -38,9 +38,9 @@ public class AdminUsdEntry extends AppCompatActivity {
         }
         Double dValue = Double.parseDouble(value);
 
-        Firebase.getInstance().getReference("GlobalMarket").child("data").child("usd").setValue(dValue);
+        Firebase.getInstance().getDatabase().getReference("GlobalMarket").child("data").child("usd").setValue(dValue);
 
-        DatabaseReference dateRef = Firebase.getInstance().getReference("Market").child(Util.getTodayDateInMills());
+        DatabaseReference dateRef = Firebase.getInstance().getDatabase().getReference("Market").child(Util.getTodayDateInMills());
 
         dateRef.child("dollar").setValue(dValue);
 

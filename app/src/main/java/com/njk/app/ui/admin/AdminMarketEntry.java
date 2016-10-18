@@ -112,10 +112,10 @@ public class AdminMarketEntry extends AppCompatActivity implements AdapterView.O
         }
 
 
-        Firebase.getInstance().getReference("Tulip").child("data").child("products").child(productName).child(marketName).setValue(market);
+        Firebase.getInstance().getDatabase().getReference("Tulip").child("data").child("products").child(productName).child(marketName).setValue(market);
 
 
-        DatabaseReference dateRef = Firebase.getInstance().getReference("Maple").child("data").child("Markets").child("" + Util.getTodayDateInMills());
+        DatabaseReference dateRef = Firebase.getInstance().getDatabase().getReference("Maple").child("data").child("Markets").child("" + Util.getTodayDateInMills());
         dateRef.child("date").setValue(todaysDate);
         DatabaseReference productRef = dateRef.child("products");
         productRef.child(productName).child(marketName).setValue(market);

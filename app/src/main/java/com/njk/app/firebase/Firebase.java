@@ -9,15 +9,37 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Firebase {
 
     private static FirebaseDatabase database;
+    private static Firebase mInstance;
 
-    private Firebase() {}
+    private Firebase() {
+    }
+
+    public static Firebase getInstance() {
+        if (mInstance == null) {
+            mInstance = new Firebase();
+        }
+        return mInstance;
+    }
 
 
-    public static FirebaseDatabase getInstance() {
+    public FirebaseDatabase getDatabase() {
         if (database == null) {
             database = FirebaseDatabase.getInstance();
-            database.setPersistenceEnabled(true);
+//            database.setPersistenceEnabled(true);
+//            database.goOnline();
+
         }
         return database;
+    }
+
+    public void goOffline() {
+        if (database != null) {
+            database.goOffline();
+        }
+    }
+    public void goOnline() {
+        if (database != null) {
+            database.goOnline();
+        }
     }
 }

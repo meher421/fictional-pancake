@@ -42,7 +42,7 @@ public class AdminTestFragment extends Fragment {
                              Bundle savedInstanceState) {
         getActivity().setTitle("AdminTest");
         // Inflate the layout for this fragment
-        Test.createTestData2(Firebase.getInstance());
+        Test.createTestData2(Firebase.getInstance().getDatabase());
 //        simTest();
         return inflater.inflate(R.layout.fragment_admin_fragmner, container, false);
     }
@@ -51,7 +51,7 @@ public class AdminTestFragment extends Fragment {
     public void simTest() {
         Test.createTestData();
 
-        FirebaseDatabase database = Firebase.getInstance();
+        FirebaseDatabase database = Firebase.getInstance().getDatabase();
         DatabaseReference dailyMarketRef = database.getReference("DailyMarket");
         dailyMarketRef.removeValue();
         dailyMarket(dailyMarketRef);

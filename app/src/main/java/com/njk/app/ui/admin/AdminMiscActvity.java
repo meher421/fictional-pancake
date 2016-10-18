@@ -35,7 +35,7 @@ public class AdminMiscActvity extends AppCompatActivity {
         if (TextUtils.isEmpty(productName)) {
             return;
         }
-        Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).removeValue();
+        Firebase.getInstance().getDatabase().getReference("GlobalMarket").child("data").child("products").child(productName).removeValue();
 
 
     }
@@ -48,7 +48,7 @@ public class AdminMiscActvity extends AppCompatActivity {
             return;
         }
 
-        Firebase.getInstance().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).removeValue();
+        Firebase.getInstance().getDatabase().getReference("GlobalMarket").child("data").child("products").child(productName).child(marketName).removeValue();
 
         new HttpThread().start();
 
