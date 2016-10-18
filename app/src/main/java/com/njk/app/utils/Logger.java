@@ -9,4 +9,8 @@ public class Logger {
     public static void i(String tag, String str) {
         Log.i(tag, str);
     }
+
+    public static void e(String tag, String str) {
+        Log.e(tag, str);
+    }
 }
