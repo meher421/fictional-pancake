@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements AdminActivity.OnClickAdapt
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         getActivity().setTitle(getString(R.string.tit_home));
-
+        if (mActivity != null)
         mActivity.registerReceiver(mBroadcastReceiver, new IntentFilter(DownlinkIntentService.ACTION_INIT_COMPLETE));
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -85,6 +85,7 @@ public class HomeFragment extends Fragment implements AdminActivity.OnClickAdapt
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (mActivity != null)
         mActivity.unregisterReceiver(mBroadcastReceiver);
     }
 
