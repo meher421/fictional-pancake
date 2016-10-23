@@ -15,8 +15,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="contact_info_text">\n\n\n Nischay J Katariya \n C/o: Jethalal J Katariya, \n 11-1-966, \n New NGO\'s Colony, \n Nizamabad, \n Telangana-503002, \n India
-        \n \n Call us: \n \n Nischay Katariya : +91 9949059028 \n Jethalal Katariya : +91 9849059028  \n \nEmail us: \n njkatariya1607@gmail.com
+    <string name="contact_info_text">\n\n\n Mail Address: \n Nischay J Katariya \n C/o: Jethalal Katariya, \n 11-1-966, \n New NGO\'s Colony, \n Nizamabad, \n Telangana-503002, \n India
+        \n \n Call us: \n Nischay Katariya : +91 9949059028 \n Jethalal Katariya : +91 9849059028  \n \nEmail us: \n njkatariya1607@gmail.com
     </string>
 
 
@@ -27,4 +27,96 @@
         <item>Closed</item>
 
     </string-array>
+
+    <string name="about_us"><b>Introducing TTJJ:</b>\n\n
+
+Nischay J Katariya\n\n
+
+Dear All,\n
+
+I am Nischay J Katariya S/O Jethalal Katariya a Computer Science Engineering
+
+graduate. I joined my father in the year 2013. I welcome you to TTJJ which stands for “Trade
+
+Through Javerchand Jethalal “.\n\n
+
+When I joined him I always wanted to use technology in my business. Finally I came up
+
+with an idea where our firm could be in contact with each and everyone in our clients through an
+
+android application. The application is really very simple. We give you the daily trend of few
+
+commodities like Turmeric, Sesame seeds and cumin seeds from the supplying centers,
+
+weather the trend is up, down or steady when compared to the previous day. This application is
+
+so simple that it can be used by a farmer, trader, exporter or anyone around the world. Based
+
+on these reports that we give, you can decide whether it is the right time to buy any of the above
+
+mentioned commodities. The application will also give you weekly notifications which will
+
+summarize you about the trades and demand in these commodities.\n\n
+
+Our Vision:\n
+
+1. To create experiences where passion and purpose come together.\n
+
+2. To establish TTJJ in the global arena.\n\n
+
+Our Mission:\n
+
+Our mission is to make TTJJ a global enterprise fulfilling its clients’ needs in terms of
+
+quality, quantity and pricing so that it converts its clients into brand advocates.\n\n
+
+Our Strength:\n
+
+1. Competitive pricing\n
+
+2. Quality Products\n
+
+3. On time delivery\n\n
+
+We have always delivered what we promised. We think our clients enjoy working with us
+
+which benefits their business because they believe that we would deliver what has been
+
+promised. We have the experience that a client needs so that the trust and belief gets stronger
+
+every time they work through us.\n\n
+
+So with the above vision, mission and strengths we present you TTJJ.\n\n
+
+Our History\n
+
+Javerchand Jethalal &amp; Co was started on 4 th September 1955 by Late Sri ManjiBhai Katariya.
+
+He was a classic first generation entrepreneur. He was a man who started small, dreamt big
+
+and used a combination of grit and perseverance to create this company.\n
+
+He had a difficult journey in the beginning but he believed that this would create wonders some
+
+day. He tried to keep his business to a manageable size so that he never lost sight of the
+
+relationships that he had built over the years.\n
+
+The success of this company would not be possible if we do not mention Jethalal Katariya who
+
+was the working force behind this company.
+
+Jethalal Katariya’s photo\n
+
+Jethalal Katariya was very keen in joining his father in his business at a very young age. He
+
+joined his father in the year 1969. Following his father’s principles he took the business to new
+
+heights. Breaking all the barriers, he expanded the company’s operations to major parts of the
+
+country.\n\n
+
+Because of Jethalal Katariyas ill health he could not continue trading but he started broking firm
+
+with his son in an improvised name i.e. TTJJ.</string>
 </resources>
