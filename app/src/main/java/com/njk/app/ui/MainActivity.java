@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         View hearder = navigationView.getHeaderView(0);
         ImageView imageView = (ImageView) hearder.findViewById(R.id.imageView);
         imageView.setOnClickListener(this);
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void startHomeFragment() {
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
         getFragmentManager().beginTransaction().replace(R.id.frame, new HomeFragment(), "home").commitAllowingStateLoss();
     }
 
