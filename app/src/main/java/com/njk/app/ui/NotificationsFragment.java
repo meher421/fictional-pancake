@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,6 +52,8 @@ public class NotificationsFragment extends Fragment implements NotificationAdapt
 //        Firebase.getInstance().goOnline();
 
         // Inflate the layout for this fragment
+        if (mActivity != null)
+            mActivity.registerReceiver(mBroadcastReceiver, new IntentFilter(DownlinkIntentService.ACTION_INIT_COMPLETE));
         return view;
     }
 
@@ -80,7 +83,7 @@ public class NotificationsFragment extends Fragment implements NotificationAdapt
         @Override
         public void onReceive(Context context, Intent intent) {
             Logger.i(TAG, "received braodcast");
-            mAdapter.notifyDataSetChanged();
+            mAdapter.refreshAdapterData();
         }
     };
 }

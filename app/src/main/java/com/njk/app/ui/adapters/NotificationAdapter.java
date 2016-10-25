@@ -40,7 +40,11 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
     }
-
+    public void refreshAdapterData()
+    {
+        messages = MarketHelper.getInstance().getMessageList();
+        notifyDataSetChanged();
+    }
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         configureViewHolder(holder, position);
