@@ -1,6 +1,7 @@
 package com.njk.app.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -13,7 +14,7 @@ import com.njk.app.ui.admin.AdminHomeActivity;
 
 public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceClickListener {
 
-    private Preference mVersion;
+    private Preference mVersion,mRateUs;
     private int i = -1;
 
     @Override
@@ -28,9 +29,11 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         addPreferencesFromResource(R.xml.app_settings);
 
         mVersion = findPreference(getString(R.string.key_version));
+        mRateUs = findPreference(getString(R.string.key_rate_us));
         mVersion.setSummary(BuildConfig.VERSION_NAME);
 
         mVersion.setOnPreferenceClickListener(this);
+        mRateUs.setOnPreferenceClickListener(this);
 
     }
 
@@ -43,6 +46,10 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
                 startActivity(new Intent(getActivity(), AdminHomeActivity.class));
             }
             return true;
+        }else if(mRateUs == preference){
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("market://details?id=com.ttjj.app"));
+            startActivity(intent);
         }
         return false;
     }
